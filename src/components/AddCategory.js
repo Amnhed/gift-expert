@@ -14,7 +14,7 @@ export const AddCategory = ({ setCategorias }) => {
          e.preventDefault();
          if( inputValue.trim().length > 2 ){
             console.log('Se envio el formulario');
-            setCategorias( categorias => [...categorias, inputValue])
+            setCategorias( categorias => [inputValue, ...categorias])
             setInputValue('')
         }
     }
