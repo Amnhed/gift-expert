@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { GiftGridItem } from './GiftGridItem'
 
 export const GiftGrid = ({ category }) => {
     const [count, setCount] = useState(0)
-
+    const [images, setImages] = useState([])
     useEffect( () => {
         getGifts();
     }, [])
@@ -16,10 +17,11 @@ export const GiftGrid = ({ category }) => {
                 return {
                     id: img.id,
                     title: img.title,
-                    image: img.images?.downsized_medium.url
+                    url: img.images?.downsized_medium.url
                 }
             })
         console.table(gifs)
+        setImages(gifs)
     }
 
 
@@ -27,7 +29,18 @@ export const GiftGrid = ({ category }) => {
     return (
         <div>
             <h3>{ category }</h3>
+
+            {
+                images.map((img) => (
+                    <GiftGridItem 
+                    key= { img.id } 
+                    { ...img } /> // {...img} asi envio las propiedad. como si fuera una propiedad independiente
+                ))
+            }
+
             <div>{ count }</div>
+
+
             <button onClick= { ()=> setCount( count +1 ) }>Incrementar</button>
         </div>
     )
