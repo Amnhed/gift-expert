@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 
-export const AddCategory = () => {
-     const [inputValue, setInputValue] = useState('')
+export const AddCategory = ({ setCategorias }) => {
+    //prop.setCategories 
+    const [inputValue, setInputValue] = useState('')
 
      const handleInputChange = (e)  => {
         setInputValue(e.target.value)
@@ -9,8 +10,12 @@ export const AddCategory = () => {
 
      const handleSubmit = (e) => {
          e.preventDefault();
-         console.log('Se envio el formulario');
-     }
+         if( inputValue.trim().length > 2 ){
+            console.log('Se envio el formulario');
+            setCategorias( categorias => [...categorias, inputValue])
+            setInputValue('')
+        }
+    }
 
     return (
         <form onSubmit= { handleSubmit }>
