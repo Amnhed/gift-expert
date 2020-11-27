@@ -27,21 +27,24 @@ export const GiftGrid = ({ category }) => {
 
 
     return (
-        <div>
+        <>
             <h3>{ category }</h3>
+            <div className="card-grid">
+                
 
-            {
-                images.map((img) => (
-                    <GiftGridItem 
-                    key= { img.id } 
-                    { ...img } /> // {...img} asi envio las propiedad. como si fuera una propiedad independiente
-                ))
-            }
+                {
+                    images.map((img) => (
+                        <GiftGridItem 
+                        key= { img.id } 
+                        { ...img } /> // {...img} asi envio las propiedad. como si fuera una propiedad independiente
+                    ))
+                }
 
-            <div>{ count }</div>
+                <div>{ count }</div>
 
 
-            <button onClick= { ()=> setCount( count +1 ) }>Incrementar</button>
-        </div>
+                <button onClick= { ()=> setCount( count +1 ) }>Incrementar</button>
+            </div>
+        </>
     )
 }
